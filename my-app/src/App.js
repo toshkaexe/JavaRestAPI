@@ -1,11 +1,12 @@
 import './App.css';
-import UserComponent from './components/UserComponent';
-
+import UserList from './components/UserList';
+import CreateUser from './components/CreateUser';
 function App() {
   return (
       <div className="App">
-        <h1>Welcome</h1>
-        <UserComponent/>
+        <h1 className="text-left">User List</h1>
+
+        <UserList/>
       </div>      
 
   );
