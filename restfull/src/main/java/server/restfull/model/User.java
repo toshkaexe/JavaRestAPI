@@ -1,5 +1,9 @@
 package server.restfull.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +17,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private String id;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -27,18 +31,20 @@ public class User {
 
 	}
 
-	public User(String firstName, String lastName, String email) {
-		super();
+	public User(String id, String firstName, String lastName, String email) {
+        super();
+        
+        this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -65,4 +71,4 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-}
+};
