@@ -1,32 +1,13 @@
-[
-{
-"id": 1,
-"firstName": "Ramesh",
-"lastName": "Fadatare",
-"email": "ramesh@gmail.com"
-},
-{
-"id": 2,
-"firstName": "Tom",
-"lastName": "Cruise",
-"email": "tom@gmail.com"
-},
-{
-"id": 3,
-"firstName": "Tony",
-"lastName": "Stark",
-"email": "tony@gmail.com"
-},
-{
-"id": 4,
-"firstName": "Bobik",
-"lastName": "St",
-"email": "bobik@gmail.com"
-},
-{
-"id": 5,
-"firstName": "Ted",
-"lastName": "Tediito",
-"email": "ted.tedito@gmail.com"
-}
-]
+{"users":[    
+    {"name":"Ram","lastname":"BobM34", "email":"ram@gmail.com", "id":1},    
+    {"name":"Shyam","lastname":"BobM3", "email":"shyam23@gmail.com", "id":2},  
+    {"name":"John", "lastname":"BobM2", "email":"john@gmail.com", "id":3},    
+    {"name":"Peter", "lastname":"BobM", "email":"bo@gmail.com", "id":5}
+    {"name":"Thomas", "lastname":"Kirkorov", "email":"temst@gmail.com", "id":6}  
+    {"name":"Robert", "lastname":"Trubac", "email":"trs@gmail.com", "id":7}  
+    {"name":"Graf", "lastname":"Chechov", "email":"ggg@gmail.com", "id":8}  
+    {"name":"Till", "lastname":"Afixa", "email":"hhh@gmail.com", "id":9}  
+    {"name":"Moris", "lastname":"Mueller", "email":"h@gmail.com", "id":56}  
+    {"name":"Andreas", "lastname":"Son", "email":"h2@gmail.com", "id":44}  
+    {"name":"Silvester", "lastname":"Piera", "email":"b2@gmail.com", "id":55}     
+]}  
