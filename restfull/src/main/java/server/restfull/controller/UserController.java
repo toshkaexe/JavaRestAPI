@@ -2,10 +2,12 @@
 package server.restfull.controller;
 
 import java.text.SimpleDateFormat;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.List;
 import java.util.TimeZone;
-
-import server.restfull.model.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.log.LogFormatUtils;
@@ -20,12 +22,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import server.restfull.dao.UserDaoImpl;
 import server.restfull.model.User;
 import server.restfull.repo.UserRepo;
+
 import org.apache.commons.logging.Log;
 
 import org.apache.juli.logging.LogFactory;
 import org.json.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.json.JSONObject;
 import org.apache.commons.logging.Log;
 
@@ -33,9 +38,10 @@ import org.apache.commons.logging.Log;
 
 @RestController
 public class UserController {
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
 	@Autowired
-	private UserService userService;
+	private UserDaoImpl userService;
 
 	@RequestMapping("/")
 	@ResponseBody
@@ -46,7 +52,7 @@ public class UserController {
 
 	@RequestMapping(value = "users", method = RequestMethod.GET)
 	public List<User> getAllUsers() {
-		return userService.getAllUsers();
+		return this.userService.getAllUsers();
 	}
 
 	@RequestMapping(value = "users/{id}", method = RequestMethod.GET, produces = "application/json")
@@ -61,19 +67,22 @@ public class UserController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "users")
-	public void addUser(@RequestBody User user) {
-		userService.addUser(new User("11", "Mana", "Papa", "Pap@gail.com"));
+	public List<User> addUser(@RequestBody User user) throws ParseException {
+		User user1 = new User("11", "Mana", "Papa", "Pap@gail.com");
+		userService.addUser(user1);
+		System.out.println("test");
+		return userService.addUser(user1);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "users/{id}", produces = "application/json")
-	public void updateUser(@RequestBody User user, @PathVariable int id) {
-		userService.updateUserList(id, user);
-	}
+//	@RequestMapping(method = RequestMethod.PUT, value = "users/{id}", produces = "application/json")
+//	public void updateUser(@RequestBody User user, @PathVariable String id) {
+//		userService.updateUserList(id, new User(id, "Mana", "Papa", "Pap@gail.com"));
+//	}
 
-	@RequestMapping(method = RequestMethod.DELETE, value = "users/{id}")
-	public void deleteUser(@RequestBody User user, @PathVariable int id) {
-		userService.deleteUserList(id);
-		System.out.println("AAAAAAAAAAAAAAABBBBBBBBBBBBBB");
-	}
+//	@RequestMapping(method = RequestMethod.DELETE, value = "users/{id}")
+//	public void deleteUser(@RequestBody User user, @PathVariable int id) {
+//		userService.deleteUserList(id);
+//		System.out.println("AAAAAAAAAAAAAAABBBBBBBBBBBBBB");
+//	}
 
 }
