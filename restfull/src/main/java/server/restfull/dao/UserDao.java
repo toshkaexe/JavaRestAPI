@@ -6,7 +6,7 @@ import server.restfull.model.User;
 
 public interface UserDao {
 
-	void addUser();
+	List<User> addUser(User newUser);
 
 	User getUserById(String id);
 
@@ -14,8 +14,8 @@ public interface UserDao {
 
 	void update(User user);
 
-	void delete(int id);
-
-	User getUserById(int id);
+	List<User> deleteById(String id);
+	
+	
 
 }

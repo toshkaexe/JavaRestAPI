@@ -83,25 +83,11 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
-	public List<User> addUser(User user) throws org.json.simple.parser.ParseException {
-		List<User> users = loadDataFromJsonArray();
+	public List<User> addUser(User user) {
 
-		users.add(user);
+		this.users.add(user);
 		System.out.println(user);
-		return users;
-
-	}
-
-	@Override
-	public User getUserById(int id) {
-		for (int i = 0; i < users.size(); i++) {
-			User u = users.get(i);
-			if (u.getId().equals(id))
-
-				return u;
-
-		}
-		return null;
+		return this.users;
 
 	}
 
@@ -112,22 +98,18 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void delete(int id) {
+	public List<User> deleteById(String id) {
+
 		for (int i = 0; i < users.size(); i++) {
 			User u = users.get(i);
 			if (u.getId().equals(id)) {
-				users.remove(id);
-				return;
+				this.users.remove(id);
+				return users;
 
 			}
 
 		}
-
-	}
-
-	@Override
-	public void addUser() {
-		// TODO Auto-generated method stub
+		return null;
 
 	}
 

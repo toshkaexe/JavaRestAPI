@@ -68,10 +68,8 @@ public class UserController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "users")
 	public List<User> addUser(@RequestBody User user) throws ParseException {
-		User user1 = new User("11", "Mana", "Papa", "Pap@gail.com");
-		userService.addUser(user1);
-		System.out.println("test");
-		return userService.addUser(user1);
+
+		return userService.addUser(user);
 	}
 
 //	@RequestMapping(method = RequestMethod.PUT, value = "users/{id}", produces = "application/json")

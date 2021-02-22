@@ -20,18 +20,36 @@ public class UserDaoTest {
 	}
 
 	@Test
-	public void getUserByIdTest() throws Exception {
+	public void TEST_getUserById() throws Exception {
 
 		User extectedUser = new User("187", "Donald", "Tramp", "Donald.trump@gmail.com");
 		User actual = dao.getUserById("187");
+
 		assertEquals(extectedUser.getFirstName(), actual.getFirstName());
 		assertEquals(extectedUser.getLastName(), actual.getLastName());
 		assertEquals(extectedUser.getEmail(), actual.getEmail());
 	}
 
+	@Test
+	public void TEST_addUser() throws Exception {
+
+		UserDao dao = new UserDaoImpl();
+		User newUser = new User("18717", "Pavel", "Durov", "Pavel.Durov@gmail.com");
+		String expectedName = newUser.getFirstName();
+		String expectedLastName = newUser.getLastName();
+		String expectedEmail = newUser.getEmail();
+
+		String expectedID = newUser.getId();
+		// addUser
+		dao.addUser(newUser);
+
+		assertEquals(expectedName, dao.getUserById(expectedID).getFirstName());
+		assertEquals(expectedLastName, dao.getUserById(expectedID).getLastName());
+		assertEquals(expectedEmail, dao.getUserById(expectedID).getEmail());
+
+	}
+
 }
-
-
 
 //List<User> users = new ArrayList<User>();
 //users.add(new User("Tam", "Wind", "Tam.Wind@gmail.com", "1"));
