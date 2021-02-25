@@ -71,10 +71,21 @@ public class UserDaoImpl implements UserDao {
 
 		for (int i = 0; i < users.size(); i++) {
 			User u = users.get(i);
-
 			if ((u.getId()).equals(id)) {
-
 				return users.get(i);
+			}
+		}
+		return null;
+	}
+
+	
+	public List<User> deleteUser(String id) {
+
+		for (int i = 0; i < users.size(); i++) {
+			User u = users.get(i);
+			if (u.getId().equals(id)) {
+				users.remove(i);
+				return users;
 
 			}
 
@@ -82,11 +93,13 @@ public class UserDaoImpl implements UserDao {
 		return null;
 
 	}
-
+	
+	
+	
 	public List<User> addUser(User user) {
-
-		this.users.add(user);
-		System.out.println(user);
+		User user1 = new User();
+		users.add(user1);
+		System.out.println(user1.toString());
 		return this.users;
 
 	}
@@ -97,26 +110,14 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
-	@Override
-	public List<User> deleteById(String id) {
 
-		for (int i = 0; i < users.size(); i++) {
-			User u = users.get(i);
-			if (u.getId().equals(id)) {
-				this.users.remove(id);
-				return users;
-
-			}
-
-		}
-		return null;
-
-	}
 
 	@Override
 	public List<User> getAllUsers() {
 
 		return users;
 	}
+
+
 
 }

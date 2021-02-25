@@ -49,6 +49,24 @@ public class UserDaoTest {
 
 	}
 
+	@Test
+	public void TEST_deleteUser() throws Exception {
+
+		UserDao dao = new UserDaoImpl();
+		User newUser = new User("187", "Pavel", "Durov", "Pavel.Durov@gmail.com");
+		String expectedName = newUser.getFirstName();
+		String expectedLastName = newUser.getLastName();
+		String expectedEmail = newUser.getEmail();
+
+		String expectedID = newUser.getId();
+		// addUser
+		dao.deleteUser("187");
+		User actual1 = dao.getUserById("187");
+
+		assertEquals(null, dao.getUserById("187"));
+
+	}
+
 }
 
 //List<User> users = new ArrayList<User>();

@@ -50,7 +50,7 @@ public class UserController {
 		return "login";
 	}
 
-	@RequestMapping(value = "users", method = RequestMethod.GET)
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public List<User> getAllUsers() {
 		return this.userService.getAllUsers();
 	}
@@ -72,15 +72,22 @@ public class UserController {
 		return userService.addUser(user);
 	}
 
+	
+	
+	@RequestMapping(method = RequestMethod.DELETE, value = "users/{id}")
+	public void deleteById(@RequestBody User user, @PathVariable String id) {
+		userService.deleteUser(id);
+		System.out.println("AAAAAAAAAAAAAAABBBBBBBBBBBBBB");
+	}
+	
+	
+	
+	
 //	@RequestMapping(method = RequestMethod.PUT, value = "users/{id}", produces = "application/json")
 //	public void updateUser(@RequestBody User user, @PathVariable String id) {
 //		userService.updateUserList(id, new User(id, "Mana", "Papa", "Pap@gail.com"));
 //	}
 
-//	@RequestMapping(method = RequestMethod.DELETE, value = "users/{id}")
-//	public void deleteUser(@RequestBody User user, @PathVariable int id) {
-//		userService.deleteUserList(id);
-//		System.out.println("AAAAAAAAAAAAAAABBBBBBBBBBBBBB");
-//	}
+
 
 }
