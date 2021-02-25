@@ -32,9 +32,9 @@ public class User {
 	}
 
 	public User(String id, String firstName, String lastName, String email) {
-        super();
-        
-        this.id = id;
+		super();
+
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -70,5 +70,12 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+
+		return String.format("USER: [%s - %s - %s - %s]", getId(), getFirstName(), getLastName(), getEmail());
+
 	}
 };
