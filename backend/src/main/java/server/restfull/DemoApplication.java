@@ -43,8 +43,8 @@ public class DemoApplication implements CommandLineRunner {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@Autowired
-	private UserRepo userRepository;
+//	@Autowired
+//	private UserRepo userRepository;
 
 	public void run(String... args) throws Exception {
 

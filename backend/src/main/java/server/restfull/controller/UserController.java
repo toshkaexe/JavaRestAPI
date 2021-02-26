@@ -66,28 +66,36 @@ public class UserController {
 			return userService.getUserById(id);
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "users")
+	@RequestMapping(value = "/hello", method = RequestMethod.POST)
+	public String helloPost() {
+		return "hello post";
+	}
+
+	@RequestMapping(value = "/hello", method = RequestMethod.PUT)
+	public String helloGet() {
+		return "hello put";
+	}
+
+	@RequestMapping(value = "/hello", method = RequestMethod.DELETE)
+	public String helloDelete() {
+		return "hello delete";
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/users", produces = "application/json")
 	public List<User> addUser(@RequestBody User user) throws ParseException {
 
 		return userService.addUser(user);
 	}
 
-	
-	
-	@RequestMapping(method = RequestMethod.DELETE, value = "users/{id}")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/users/{id}", produces = "application/json")
 	public void deleteById(@RequestBody User user, @PathVariable String id) {
 		userService.deleteUser(id);
 		System.out.println("AAAAAAAAAAAAAAABBBBBBBBBBBBBB");
 	}
-	
-	
-	
-	
+
 //	@RequestMapping(method = RequestMethod.PUT, value = "users/{id}", produces = "application/json")
 //	public void updateUser(@RequestBody User user, @PathVariable String id) {
 //		userService.updateUserList(id, new User(id, "Mana", "Papa", "Pap@gail.com"));
 //	}
-
-
 
 }
