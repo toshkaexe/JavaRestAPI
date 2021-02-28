@@ -6,7 +6,7 @@ import server.restfull.model.User;
 
 public interface UserDao {
 
-	List<User> addUser(User newUser);
+	
 
 	List<User> deleteUser(String id);
 

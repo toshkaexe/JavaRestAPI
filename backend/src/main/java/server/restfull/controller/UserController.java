@@ -38,8 +38,9 @@ import org.apache.commons.logging.Log;
 
 @RestController
 public class UserController {
-	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
+	Logger log = LoggerFactory.getLogger(getClass());
+	
 	@Autowired
 	private UserDaoImpl userService;
 
@@ -47,11 +48,13 @@ public class UserController {
 	@ResponseBody
 	public String welcome() {
 
+		log.info("login");
 		return "login";
 	}
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public List<User> getAllUsers() {
+		log.info("curl get all users");
 		return this.userService.getAllUsers();
 	}
 
@@ -63,34 +66,22 @@ public class UserController {
 			System.out.println(String.format("Sorry, but we do not have user with id=%s", id));
 			return null;
 		} else
+			log.info("curl get by id");
 			return userService.getUserById(id);
 	}
 
-	@RequestMapping(value = "/hello", method = RequestMethod.POST)
-	public String helloPost() {
-		return "hello post";
-	}
-
-	@RequestMapping(value = "/hello", method = RequestMethod.PUT)
-	public String helloGet() {
-		return "hello put";
-	}
-
-	@RequestMapping(value = "/hello", method = RequestMethod.DELETE)
-	public String helloDelete() {
-		return "hello delete";
-	}
-
 	@RequestMapping(method = RequestMethod.POST, value = "/users", produces = "application/json")
-	public List<User> addUser(@RequestBody User user) throws ParseException {
+	public void addUser(@RequestBody User user) throws ParseException {
 
-		return userService.addUser(user);
+		userService.addUser(user);
+		log.info("curl put");
+
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/users/{id}", produces = "application/json")
-	public void deleteById(@RequestBody User user, @PathVariable String id) {
+	public void deleteById(@PathVariable String id) {
 		userService.deleteUser(id);
-		System.out.println("AAAAAAAAAAAAAAABBBBBBBBBBBBBB");
+		log.info("curl delete");
 	}
 
 //	@RequestMapping(method = RequestMethod.PUT, value = "users/{id}", produces = "application/json")

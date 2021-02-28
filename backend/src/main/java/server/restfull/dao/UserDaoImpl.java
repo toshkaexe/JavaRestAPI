@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao {
 		List<User> users = new ArrayList<>();
 		// JSON parser object to parse read file
 		JSONParser jsonParser = new JSONParser();
-		try (FileReader reader = new FileReader("../restfull/src/main/resources/userlist.json")) {
+		try (FileReader reader = new FileReader("../backend/src/main/resources/userlist.json")) {
 			// Read JSON file
 			Object obj = jsonParser.parse(reader);
 			JSONObject jsonObject = (JSONObject) obj;
@@ -78,7 +78,6 @@ public class UserDaoImpl implements UserDao {
 		return null;
 	}
 
-	
 	public List<User> deleteUser(String id) {
 
 		for (int i = 0; i < users.size(); i++) {
@@ -93,14 +92,10 @@ public class UserDaoImpl implements UserDao {
 		return null;
 
 	}
-	
-	
-	
-	public List<User> addUser(User user) {
-		User user1 = new User();
-		users.add(user1);
-		System.out.println(user1.toString());
-		return this.users;
+
+	public void addUser(User user) {
+		users.add(user);
+		System.out.println(user.toString());
 
 	}
 
@@ -110,14 +105,10 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
-
-
 	@Override
 	public List<User> getAllUsers() {
 
 		return users;
 	}
-
-
 
 }
