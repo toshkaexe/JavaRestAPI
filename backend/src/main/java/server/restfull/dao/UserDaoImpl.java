@@ -111,4 +111,16 @@ public class UserDaoImpl implements UserDao {
 		return users;
 	}
 
+	public void updateUser(String id, User user) {
+		for (int i = 0; i < users.size(); i++) {
+			User u = users.get(i);
+			if (u.getId().equals(id)) {
+				users.set(i, user);
+				return;
+			}
+
+		}
+
+	}
+
 }

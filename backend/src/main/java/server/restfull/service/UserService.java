@@ -13,7 +13,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import java.io.FileReader;
 import java.io.IOException;
-
+import java.net.URL;
 
 @Service
 public class UserService implements UserDao {
@@ -31,7 +31,15 @@ public class UserService implements UserDao {
 		List<User> users = new ArrayList<>();
 		// JSON parser object to parse read file
 		JSONParser jsonParser = new JSONParser();
-		try (FileReader reader = new FileReader("../restfull/src/main/resources/userlist.json")) {
+		// try (FileReader reader = new
+		// FileReader("../restfull/src/main/resources/userlist.json")) {
+
+		URL resource = getClass().getClassLoader().getResource("userlist.json");
+		if (resource == null) {
+			throw new IllegalArgumentException("file not found!");
+		}
+
+		try (FileReader reader = new FileReader(resource.toString())) {
 			// Read JSON file
 			Object obj = jsonParser.parse(reader);
 			JSONObject jsonObject = (JSONObject) obj;
@@ -58,7 +66,7 @@ public class UserService implements UserDao {
 
 		return users;
 	}
-	
+
 	public User getUser() {
 		return new User("id1", "name1", "name2", "email");
 	}
@@ -74,7 +82,6 @@ public class UserService implements UserDao {
 		return null;
 	}
 
-	
 	public List<User> deleteUser(String id) {
 
 		for (int i = 0; i < users.size(); i++) {
@@ -89,9 +96,7 @@ public class UserService implements UserDao {
 		return null;
 
 	}
-	
-	
-	
+
 	public List<User> addUser(User user) {
 		User user1 = new User();
 		users.add(user1);
@@ -106,14 +111,10 @@ public class UserService implements UserDao {
 
 	}
 
-
-
 	@Override
 	public List<User> getAllUsers() {
 
 		return users;
 	}
-
-
 
 }
