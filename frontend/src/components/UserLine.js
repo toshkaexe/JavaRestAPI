@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+import { DeleteItem } from "./DeleteItem";
+import { EditItem } from "./EditItem";
 
 function UserLine(props) {
   return (
@@ -9,13 +11,8 @@ function UserLine(props) {
       <td> {props.lastname}</td>
       <td> {props.email}</td>
       <td>
-        <Button variant="contained" color="primary">
-          Edit
-        </Button>
-
-        <Button variant="contained" color="secondary">
-          Remove
-        </Button>
+        <EditItem />
+        <DeleteItem />
       </td>
     </tr>
   );
