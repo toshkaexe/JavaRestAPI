@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
 
 function UserLine(props) {
   return (
@@ -8,8 +9,13 @@ function UserLine(props) {
       <td> {props.lastname}</td>
       <td> {props.email}</td>
       <td>
-        <button className="btn btn-primary btn-sm  btn-lg">Edit User</button>
-        <button className="btn btn-danger btn-sm  btn-lg">Remove</button>
+        <Button variant="contained" color="primary">
+          Edit
+        </Button>
+
+        <Button variant="contained" color="secondary">
+          Remove
+        </Button>
       </td>
     </tr>
   );

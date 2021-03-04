@@ -27,9 +27,6 @@ class UserList extends React.Component {
   render() {
     return (
       <div className="text-left">
-        <button className="btn btn-primary btn-sm" id="defineVF">
-          + Define a new user
-        </button>
         <table className="table table-striped">
           <thead>
             <tr>

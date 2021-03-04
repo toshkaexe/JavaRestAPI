@@ -66,10 +66,11 @@ export default class AddNewUser extends React.Component {
     return (
       <div className="text-left">
         <Button
-          variant="outlined"
+          variant="contained"
           color="primary"
           onClick={this.handleClickOpen}
-        > Create new user
+        >
+          Create new user
         </Button>
         <Dialog open={this.state.open} onClose={this.handleClose}>
           <DialogTitle id="form-dialog-title">Add new User</DialogTitle>
