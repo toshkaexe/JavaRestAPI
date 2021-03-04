@@ -8,17 +8,16 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import axios from "axios";
 
 //const USERS_REST_API_URL = 'http://jsonplaceholder.typicode.com/users';
-//const USERS_REST_API_URL = "http://localhost:8080/users";
+const USERS_REST_API_URL = "http://localhost:8080/users";
 
 export default class AddNewUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
       open: false,
-
       firstname: "",
       secondname: "",
       email: "",
@@ -50,6 +49,22 @@ export default class AddNewUser extends React.Component {
         this.state.email +
         "]"
     );
+    event.preventDefault();
+    console.log(this.state);
+    axios
+      .post(USERS_REST_API_URL, {
+        id: "3434",
+        firstName: this.state.firstname,
+        secondName: this.state.secondname,
+        email: this.state.email,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console(error);
+      });
+      this.refreshPage()
   };
 
   getFirstName = (event) => {
@@ -61,6 +76,10 @@ export default class AddNewUser extends React.Component {
   getEmail = (event) => {
     this.setState({ email: event.target.value });
   };
+
+  refreshPage() {
+		window.location.reload(false);
+	}
 
   render() {
     return (
