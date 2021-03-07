@@ -1,27 +1,21 @@
-package server.restfull.dao;
+package server.restfull.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import aj.org.objectweb.asm.TypeReference;
+import server.restfull.model.UserDao;
 import server.restfull.model.User;
 
-import org.apache.tomcat.util.json.ParseException;
 import org.json.simple.JSONArray;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Iterator;
 
 @Service
 public class UserDaoImpl implements UserDao {

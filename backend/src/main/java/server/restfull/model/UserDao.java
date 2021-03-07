@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface UserDao {
 
-	List<User> addUser(User newUser);
+	void addUser(User newUser);
 
 	List<User> deleteUser(String id);
 
@@ -13,6 +13,5 @@ public interface UserDao {
 	List<User> getAllUsers();
 
 	void update(User user);
-
 
 }

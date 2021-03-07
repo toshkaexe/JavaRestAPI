@@ -1,4 +1,4 @@
-package server.restfull.dao;
+package server.restfull.model;
 
 import static org.junit.Assert.*;
 
@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import server.restfull.model.User;
+import server.restfull.service.UserDaoImpl;
 
 public class UserDaoTest {
 
