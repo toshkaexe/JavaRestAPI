@@ -48,8 +48,8 @@ public class UserController {
 	@ResponseBody
 	public String welcome() {
 
-		log.info("login");
-		return "login";
+
+		return "Hello";
 	}
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)

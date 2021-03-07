@@ -43,9 +43,6 @@ public class DemoApplication implements CommandLineRunner {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-//	@Autowired
-//	private UserRepo userRepository;
-
 	public void run(String... args) throws Exception {
 
 		// this.userRepository.save(new User("Ramesh", "Fadatare", "ramesh@gmail.com"));

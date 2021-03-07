@@ -31,7 +31,7 @@ public class UserService implements UserDao {
 		List<User> users = new ArrayList<>();
 		// JSON parser object to parse read file
 		JSONParser jsonParser = new JSONParser();
-		 try (FileReader reader = new FileReader("../restfull/src/main/resources/userlist.json")) {
+		 try (FileReader reader = new FileReader("../backend/src/main/resources/userlist.json")) {
 
 
 			// Read JSON file
