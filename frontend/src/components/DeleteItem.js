@@ -47,7 +47,7 @@ export class DeleteItem extends Component {
               Cancel
             </Button>
             <Button onClick={this.handleDeleteAndClose} color="primary">
-              Add User
+              Delete User
             </Button>
           </DialogActions>
         </Dialog>
