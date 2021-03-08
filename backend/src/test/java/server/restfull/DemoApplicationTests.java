@@ -23,7 +23,7 @@ import ch.qos.logback.core.status.Status;
 import server.restfull.controller.UserController;
 import server.restfull.repo.UserRepo;
 import server.restfull.repo.UserRepository;
-import server.restfull.service.UserDaoImpl;
+import server.restfull.service.UserService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

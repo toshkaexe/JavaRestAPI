@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import server.restfull.model.User;
-import server.restfull.service.UserDaoImpl;
+import server.restfull.service.UserService;
 
 public class UserDaoTest {
 
@@ -17,7 +17,7 @@ public class UserDaoTest {
 
 	@Before
 	public void setUp() throws Exception {
-		this.dao = new UserDaoImpl();
+		this.dao = new UserService();
 	}
 
 	@Test
@@ -36,7 +36,7 @@ public class UserDaoTest {
 	@Test
 	public void TEST_deleteUser() throws Exception {
 
-		UserDao dao = new UserDaoImpl();
+		UserDao dao = new UserService();
 		dao.deleteUser("187");
 		assertEquals(null, dao.getUserById("187"));
 

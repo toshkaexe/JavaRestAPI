@@ -18,11 +18,11 @@ import java.io.FileReader;
 import java.io.IOException;
 
 @Service
-public class UserDaoImpl implements UserDao {
+public class UserService implements UserDao {
 
 	private List<User> users = new ArrayList<>();
 
-	public UserDaoImpl() throws org.json.simple.parser.ParseException {
+	public UserService() throws org.json.simple.parser.ParseException {
 		List<User> users = new ArrayList<>();
 		users = loadDataFromJsonArray();
 		this.users = users;

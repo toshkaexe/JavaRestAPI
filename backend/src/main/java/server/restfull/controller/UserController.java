@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import server.restfull.model.User;
 
-import server.restfull.service.UserDaoImpl;
+import server.restfull.service.UserService;
 
 import org.json.simple.parser.ParseException;
 
@@ -32,7 +32,7 @@ public class UserController {
 	Logger log = LoggerFactory.getLogger(getClass());
 
 	@Autowired
-	private UserDaoImpl userService;
+	private UserService userService;
 
 	@RequestMapping("/")
 	@ResponseBody
