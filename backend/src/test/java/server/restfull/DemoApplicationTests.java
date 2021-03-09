@@ -58,18 +58,18 @@ class DemoApplicationTests {
 
 	}
 
-	@Test
-	public void contextLoads() throws Exception {
-		Mockito.when(userRepository.findAll())//
-				.thenReturn(Collections.emptyList());
-
-		MvcResult mvcResult = mockMvc.perform(//
-				MockMvcRequestBuilders.get("/users/")//
-						.accept(org.springframework.http.MediaType.APPLICATION_JSON))
-				.andReturn();
-		Mockito.verify(userRepository).findAll();
-		System.out.println(mvcResult.getResponse());
-
-	}
+//	@Test
+//	public void contextLoads() throws Exception {
+//		Mockito.when(userRepository.findAll())//
+//				.thenReturn(Collections.emptyList());
+//
+//		MvcResult mvcResult = mockMvc.perform(//
+//				MockMvcRequestBuilders.get("/users/")//
+//						.accept(org.springframework.http.MediaType.APPLICATION_JSON))
+//				.andReturn();
+//		Mockito.verify(userRepository).findAll();
+//		System.out.println(mvcResult.getResponse());
+//
+//	}
 
 }
