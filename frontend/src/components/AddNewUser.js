@@ -10,8 +10,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import axios from "axios";
 
-//const USERS_REST_API_URL = 'http://jsonplaceholder.typicode.com/users';
-const USERS_REST_API_URL = "http://localhost:8080/users";
+const USERS_REST_API_URL = "http://localhost:8085/users";
 
 export default class AddNewUser extends React.Component {
   constructor(props) {
@@ -19,13 +18,12 @@ export default class AddNewUser extends React.Component {
     this.state = {
       open: false,
       firstname: "",
-      secondname: "",
+      lastName: "",
       email: "",
     };
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleCloseAndSaveUser = this.handleCloseAndSaveUser.bind(this);
-    this.getFirstName = this.getFirstName.bind(this);
   }
 
   handleClickOpen = (event) => {
@@ -51,11 +49,13 @@ export default class AddNewUser extends React.Component {
     );
     event.preventDefault();
     console.log(this.state);
+    console.log("id1=" + this.generateId());
+
     axios
       .post(USERS_REST_API_URL, {
-        id: "3434",
+        id: this.generateId(),
         firstName: this.state.firstname,
-        secondName: this.state.secondname,
+        lastName: this.state.secondname,
         email: this.state.email,
       })
       .then((response) => {
@@ -64,13 +64,13 @@ export default class AddNewUser extends React.Component {
       .catch((error) => {
         console(error);
       });
-      this.refreshPage()
+   // this.refreshPage();
   };
 
   getFirstName = (event) => {
     this.setState({ firstname: event.target.value });
   };
-  getSecoldName = (event) => {
+  getSecondName = (event) => {
     this.setState({ secondname: event.target.value });
   };
   getEmail = (event) => {
@@ -78,8 +78,23 @@ export default class AddNewUser extends React.Component {
   };
 
   refreshPage() {
-		window.location.reload(false);
-	}
+    window.location.reload(false);
+  }
+
+  generateId() {
+    var date = new Date();
+    var components = [
+      date.getYear(),
+      date.getMonth(),
+      date.getDate(),
+      date.getHours(),
+      date.getMinutes(),
+      date.getSeconds(),
+      date.getMilliseconds(),
+    ];
+
+    return components.join("");
+  }
 
   render() {
     return (
@@ -110,7 +125,7 @@ export default class AddNewUser extends React.Component {
               label="Second Name"
               type="text"
               //    onChange={(event) => setSecondName(event.target.value)}
-              onChange={this.getSecoldName}
+              onChange={this.getSecondName}
             />
             <br />
             <TextField

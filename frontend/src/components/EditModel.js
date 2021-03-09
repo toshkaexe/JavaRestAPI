@@ -8,7 +8,12 @@ export class EditModel extends Component {
 
     constructor(props){
         super(props);
-        this.state = {snackbaropen: false, snabarmsg: ''};
+        this.state = {
+            id: false,
+            firstName: props.firstName,
+            secondName: props.secondName,
+            email: props.email};
+            
         this.handleSubmit=this.handleSubmit.bind(this);
     }
 
