@@ -40,6 +40,7 @@ public class DemoApplication implements CommandLineRunner {
 	final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
 	public static void main(String[] args) {
+		DemoApplication.class.getResourceAsStream("/userlist.json");
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
