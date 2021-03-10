@@ -64,7 +64,7 @@ export default class AddNewUser extends React.Component {
       .catch((error) => {
         console(error);
       });
-   // this.refreshPage();
+    this.refreshPage();
   };
 
   getFirstName = (event) => {

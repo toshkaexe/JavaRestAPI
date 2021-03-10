@@ -5,18 +5,21 @@ import DialogActions from "@material-ui/core/DialogActions";
 import TextField from "@material-ui/core/TextField";
 
 import DialogTitle from "@material-ui/core/DialogTitle";
+import axios from "axios";
+
+const USERS_REST_API_URL = "http://localhost:8085/users/";
 
 export class EditItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       open: false,
-      id: props.id,
-      setFirstName:  props.firstName, 
-      setLastName:  props.lastName,
-      setEmail:  props.email
+      id1: props.id,
+      setFirstName1: props.firstName,
+      setLastName1: props.lastName,
+      setEmail1: props.email,
     };
-    
+
     this.handleEditedAndClose = this.handleEditedAndClose.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleClickOpen = this.handleClickOpen.bind(this);
@@ -33,48 +36,60 @@ export class EditItem extends Component {
   };
 
   handleEditedAndClose = (event) => {
-    this.setState({ open: false,
-      
-      setFirstName:  this.state.getFirstName, 
-      secondName:  this.state.getLastName,
-      setEmail:  this.state.getEmail
+    this.setState({
+      open: false,
 
-     });
-     
+      setFirstName1: this.state.setFirstName1,
+      secondName1: this.state.setLastName1,
+      setEmail1: this.state.setEmail1,
+    });
 
     console.log("close and save user");
 
-
     console.log(
-      "User: [firstName: " +
-        this.state.setFirstName +
+      "User: [id: " +
+        this.state.id1 +
+        ", firstName: " +
+        this.state.setFirstName1 +
         ", secondName: " +
-        this.state.setLastName+
+        this.state.setLastName1 +
         ", email: " +
-        this.state.setEmail +
+        this.state.setEmail1 +
         "]"
     );
+    event.preventDefault();
+    console.log(this.state);
 
+    axios
+      .put(USERS_REST_API_URL + this.state.id1, {
+        id: this.state.id1,
+        firstName: this.state.setFirstName1,
+        lastName: this.state.setLastName1,
+        email: this.state.setEmail1,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console(error);
+      });
 
-
-
-    
-    
+    this.refreshPage();
   };
 
+  refreshPage() {
+    window.location.reload(false);
+  }
 
-
-  getFirstName = (event) => {
-    this.setState({ setFirstName: event.target.value });
+  setFirstName = (event) => {
+    this.setState({ setFirstName1: event.target.value });
   };
-  getSecoldName = (event) => {
-    this.setState({ setLastName: event.target.value });
+  setLastName = (event) => {
+    this.setState({ setLastName1: event.target.value });
   };
-  getEmail = (event) => {
-    this.setState({ setEmail: event.target.value });
+  setEmail = (event) => {
+    this.setState({ setEmail1: event.target.value });
   };
-
-
 
   render() {
     return (
@@ -84,37 +99,36 @@ export class EditItem extends Component {
           color="primary"
           onClick={this.handleClickOpen}
         >
-          Edit 
+          Edit
         </Button>
 
         <Dialog open={this.state.open} onClose={this.handleClose}>
-
           <DialogTitle> Edit User </DialogTitle>
 
           <TextField
-              autoFocus
-              margin="dense"
-              label="First Name"
-              type="text"
-              onChange={this.setFirstName}
-              defaultValue={this.state.setFirstName}              
-            />
+            autoFocus
+            margin="dense"
+            label="First Name"
+            type="text"
+            onChange={this.setFirstName}
+            defaultValue={this.state.setFirstName1}
+          />
           <TextField
-              autoFocus
-              margin="dense"
-              label="Last Name"
-              type="text"
-              onChange={this.setLastName}
-              defaultValue={this.state.setLastName}              
-            />
-                      <TextField
-              autoFocus
-              margin="dense"
-              label="Email"
-              type="text"
-              onChange={this.setEmailName}           
-              defaultValue={this.state.setEmail}              
-            />
+            autoFocus
+            margin="dense"
+            label="Last Name"
+            type="text"
+            onChange={this.setLastName}
+            defaultValue={this.state.setLastName1}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Email"
+            type="text"
+            onChange={this.setEmail}
+            defaultValue={this.state.setEmail1}
+          />
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel

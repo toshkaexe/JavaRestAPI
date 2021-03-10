@@ -38,7 +38,7 @@ public class UserController {
 	@ResponseBody
 	public String welcome() {
 
-		return "Hello";
+		return "Hello backend!";
 	}
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)

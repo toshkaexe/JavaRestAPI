@@ -4,12 +4,16 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 
 import DialogTitle from "@material-ui/core/DialogTitle";
+import axios from "axios";
+
+const USERS_REST_API_URL = "http://localhost:8085/users/";
 
 export class DeleteItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       open: false,
+      id: props.id,
     };
     this.handleDeleteAndClose = this.handleDeleteAndClose.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -28,7 +32,27 @@ export class DeleteItem extends Component {
   handleDeleteAndClose = (event) => {
     this.setState({ open: false });
     console.log("close and delete");
+    console.log("DELELTED User: [id: " + this.state.id + "]");
+
+    event.preventDefault();
+    console.log(this.state);
+
+    axios
+      .delete(USERS_REST_API_URL + this.state.id, {})
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console(error);
+      });
+
+      this.refreshPage();
   };
+
+  refreshPage() {
+    window.location.reload(false);
+  }
+
   render() {
     return (
       <div className="text-left">
