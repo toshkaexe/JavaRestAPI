@@ -23,13 +23,12 @@ import java.io.IOException;
 public class UserService implements UserDao {
 
 	private List<User> users = new ArrayList<>();
-	
-	
-	
+
 	public UserService() throws org.json.simple.parser.ParseException {
 
-		this.users.add(new User("1", "Anton", "Tim", "anton.tim@ta.de"));
-
+		this.users.add(new User("1", "Anton", "Mueller", "anton.Mueller@gogole.de"));
+		this.users.add(new User("3", "Tao", "Mao", "Tao.Mao@gogole.de"));
+		this.users.add(new User("5", "Max", "Bauer", "Max.Bauer@gogole.de"));
 	}
 //
 //	List<User> loadDataFromJsonArray() throws org.json.simple.parser.ParseException {
@@ -95,12 +94,6 @@ public class UserService implements UserDao {
 	public void addUser(User user) {
 		users.add(user);
 		System.out.println(user.toString());
-
-	}
-
-	@Override
-	public void update(User user) {
-		// TODO Auto-generated method stub
 
 	}
 

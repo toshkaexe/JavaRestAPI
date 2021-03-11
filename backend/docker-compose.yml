@@ -1,10 +1,10 @@
-version: '3.3'
+version: '3.5'
 
 services:
-   dockerservice:
-      container_name: "spring-container3"
+   server-app:
+      container_name: "server-app-container"
       build:
          context: .
          dockerfile: Dockerfile    
       ports:
-        - "8085:8085"    
+        - "8085:8085"

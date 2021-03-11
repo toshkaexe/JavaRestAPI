@@ -11,9 +11,6 @@ import server.restfull.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 
-	List <User> findByFirstName(String firstName);
 
-//	List <User> findByFirstName(String firstName);
-	
 
 }

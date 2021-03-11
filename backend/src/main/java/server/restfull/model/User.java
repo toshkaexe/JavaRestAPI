@@ -1,9 +1,5 @@
 package server.restfull.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

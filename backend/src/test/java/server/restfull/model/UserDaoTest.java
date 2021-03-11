@@ -23,15 +23,14 @@ public class UserDaoTest {
 	@Test
 	public void TEST_getUserById() throws Exception {
 
-		User extectedUser = new User("187", "Donald", "Tramp", "Donald.trump@gmail.com");
-		User actual = dao.getUserById("187");
+		User extectedUser = new User("1", "Anton", "Mueller", "anton.Mueller@gogole.de");
+		User actual = dao.getUserById("1");
 
 		assertEquals(extectedUser.getFirstName(), actual.getFirstName());
 		assertEquals(extectedUser.getLastName(), actual.getLastName());
 		assertEquals(extectedUser.getEmail(), actual.getEmail());
+
 	}
-
-
 
 	@Test
 	public void TEST_deleteUser() throws Exception {
@@ -39,6 +38,20 @@ public class UserDaoTest {
 		UserDao dao = new UserService();
 		dao.deleteUser("187");
 		assertEquals(null, dao.getUserById("187"));
+
+	}
+
+	@Test
+	public void TEST_addUser() throws Exception {
+
+		User newUser = new User("10", "Peter", "Bach", "Peter.Bach@gogole.de");
+		dao.addUser(newUser);
+
+		User newUserWithFromList = dao.getUserById("10");
+
+		assertEquals(newUser.getFirstName(), newUserWithFromList.getFirstName());
+		assertEquals(newUser.getLastName(), newUserWithFromList.getLastName());
+		assertEquals(newUser.getEmail(), newUserWithFromList.getEmail());
 
 	}
 
