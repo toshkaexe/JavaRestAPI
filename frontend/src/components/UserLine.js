@@ -11,7 +11,7 @@ function UserLine(props) {
       <td> {props.email}</td>
       <td>
         <EditItem id={props.id} firstName={props.firstname} lastName={props.lastname} email={props.email} />
-        <DeleteItem id={props.id}/>
+        <DeleteItem id={props.id} firstName={props.firstname} lastName={props.lastname} email={props.email}/>
       </td>
     </tr>
   );

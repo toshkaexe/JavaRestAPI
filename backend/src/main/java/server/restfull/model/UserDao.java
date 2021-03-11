@@ -6,7 +6,7 @@ public interface UserDao {
 
 	void addUser(User newUser);
 
-	List<User> deleteUser(String id);
+	void deleteUser(String id);
 
 	User getUserById(String id);
 

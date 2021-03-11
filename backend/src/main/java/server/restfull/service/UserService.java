@@ -76,18 +76,18 @@ public class UserService implements UserDao {
 		return null;
 	}
 
-	public List<User> deleteUser(String id) {
+	public void deleteUser(String id) {
 
 		for (int i = 0; i < users.size(); i++) {
 			User u = users.get(i);
 			if (u.getId().equals(id)) {
 				users.remove(i);
-				return users;
+				
 
 			}
 
 		}
-		return null;
+		
 
 	}
 

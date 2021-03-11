@@ -10,7 +10,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import axios from "axios";
 
-const USERS_REST_API_URL = "http://localhost:8085/users";
+const USERS_REST_API_URL = "http://localhost:8086/users";
 
 export default class AddNewUser extends React.Component {
   constructor(props) {

@@ -36,8 +36,8 @@ public class UserDaoTest {
 	public void TEST_deleteUser() throws Exception {
 
 		UserDao dao = new UserService();
-		dao.deleteUser("187");
-		assertEquals(null, dao.getUserById("187"));
+		dao.deleteUser("1");
+		assertEquals(null, dao.getUserById("1"));
 
 	}
 
