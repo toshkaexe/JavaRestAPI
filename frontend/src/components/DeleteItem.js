@@ -4,10 +4,9 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 
 import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContentText from '@material-ui/core/DialogContentText';
-import axios from "axios";
+import DialogContentText from "@material-ui/core/DialogContentText";
 
-const USERS_REST_API_URL = "http://localhost:8086/users/";
+import UserService from "../service/UserService";
 
 export class DeleteItem extends Component {
   constructor(props) {
@@ -41,16 +40,14 @@ export class DeleteItem extends Component {
     event.preventDefault();
     console.log(this.state);
 
-    axios
-      .delete(USERS_REST_API_URL +"/" +this.state.id)
+    UserService.deleteUser(this.state.id)
       .then((response) => {
         console.log(response);
+        this.refreshPage();
       })
       .catch((error) => {
         console(error);
       });
-
-      this.refreshPage();
   };
 
   refreshPage() {
@@ -69,17 +66,11 @@ export class DeleteItem extends Component {
         </Button>
 
         <Dialog open={this.state.open} onClose={this.handleClose}>
-          <DialogTitle>
-           
-            Sure to delete user?
-
-          </DialogTitle>
-          <DialogContentText className="text-left" >
-           
-            First name: {this.state.firstName},<br/>
-            Last name: {this.state.lastName},<br/>
+          <DialogTitle>Sure to delete user?</DialogTitle>
+          <DialogContentText className="text-left">
+            First name: {this.state.firstName},<br />
+            Last name: {this.state.lastName},<br />
             Email: {this.state.email}
-
           </DialogContentText>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">

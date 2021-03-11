@@ -8,9 +8,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import axios from "axios";
-
-const USERS_REST_API_URL = "http://localhost:8086/users";
+import UserService from "../service/UserService";
 
 export default class AddNewUser extends React.Component {
   constructor(props) {
@@ -51,20 +49,19 @@ export default class AddNewUser extends React.Component {
     console.log(this.state);
     console.log("id1=" + this.generateId());
 
-    axios
-      .post(USERS_REST_API_URL, {
-        id: this.generateId(),
-        firstName: this.state.firstname,
-        lastName: this.state.secondname,
-        email: this.state.email,
-      })
+    UserService.createNewUser({
+      id: this.generateId(),
+      firstName: this.state.firstname,
+      lastName: this.state.secondname,
+      email: this.state.email,
+    })
       .then((response) => {
         console.log(response);
+        this.refreshPage();
       })
       .catch((error) => {
         console(error);
       });
-    this.refreshPage();
   };
 
   getFirstName = (event) => {
@@ -134,7 +131,6 @@ export default class AddNewUser extends React.Component {
               label="Email Address"
               type="email"
               onChange={this.getEmail}
-              //onChange={(event) => setEmail(event.target.value)}
             />
           </DialogContent>
           <DialogActions>

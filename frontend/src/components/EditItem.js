@@ -5,9 +5,9 @@ import DialogActions from "@material-ui/core/DialogActions";
 import TextField from "@material-ui/core/TextField";
 
 import DialogTitle from "@material-ui/core/DialogTitle";
-import axios from "axios";
 
-const USERS_REST_API_URL = "http://localhost:8086/users";
+import UserService from "../service/UserService";
+
 export class EditItem extends Component {
   constructor(props) {
     super(props);
@@ -59,21 +59,17 @@ export class EditItem extends Component {
     event.preventDefault();
     console.log(this.state);
 
-    axios
-      .put(USERS_REST_API_URL +"/"+ this.state.id1, {
-        id: this.state.id1,
-        firstName: this.state.setFirstName1,
-        lastName: this.state.setLastName1,
-        email: this.state.setEmail1,
-      })
+    UserService.updateUser(this.state.id1, {
+      id: this.state.id1,
+      firstName: this.state.setFirstName1,
+      lastName: this.state.setLastName1,
+      email: this.state.setEmail1,
+    })
       .then((response) => {
         console.log(response);
-      })
-      .catch((error) => {
-        console(error);
+        this.refreshPage();
       });
-
-    this.refreshPage();
+     
   };
 
   refreshPage() {

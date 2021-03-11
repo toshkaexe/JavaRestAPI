@@ -3,10 +3,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import UserLine from "./UserLine";
-
-
-
-const USERS_REST_API_URL = "http://localhost:8086/users";
+import UserService from "../service/UserService";
 
 class UserList extends React.Component {
   constructor(props) {
@@ -17,21 +14,26 @@ class UserList extends React.Component {
   }
 
   componentDidMount() {
-    fetch(USERS_REST_API_URL)
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({ users: data });
-      })
-      .catch(console.log);
+    UserService.getUsers().then((response) => {
+      this.setState({ users: response.data });
+    });
+
+    // fetch(USERS_REST_API_URL)
+    //  .then((response) => response.json())
+    // .then((data) => {
+    //   this.setState({ users: data });
+    //})
+    // .catch(console.log);
   }
 
   render() {
+    const { users } = this.state;
+    console.log(users);
     return (
       <div className="text-left">
         <table className="table table-striped">
           <thead>
             <tr>
-            
               <td> User First Name</td>
               <td> User Last Name</td>
               <td> User Email Id</td>

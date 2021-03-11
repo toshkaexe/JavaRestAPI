@@ -25,7 +25,6 @@ import server.restfull.service.UserService;
 import org.json.simple.parser.ParseException;
 
 @CrossOrigin(origins = "http://localhost:3000")
-
 @RestController
 public class UserController {
 
@@ -76,15 +75,21 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.DELETE, value = "/users/{id}", produces = "application/json")
 	public void deleteById(@PathVariable String id) {
 
-		log.info(String.format("Attention, we has deleted user with id=%s", id));
-		log.info(String.format("Attention, we has deleted user with id=%s, USER[%s, name=%s, secondName=%s, email=%s]",
-				userService.getUserById(id).getId(), //
-				userService.getUserById(id).getId(), //
-				userService.getUserById(id).getFirstName(), //
-				userService.getUserById(id).getLastName(), //
-				userService.getUserById(id).getEmail()));
+		if (userService.getUserById(id) == (null)) {
+			log.info(String.format("Sorry, but we do not have user with id=%s and delete failed", id));
+		} else {
 
-		userService.deleteUser(id);
+			log.info(String.format("Attention, we has deleted user with id=%s", id));
+			log.info(String.format(
+					"Attention, we has deleted user with id=%s, USER[%s, name=%s, secondName=%s, email=%s]",
+					userService.getUserById(id).getId(), //
+					userService.getUserById(id).getId(), //
+					userService.getUserById(id).getFirstName(), //
+					userService.getUserById(id).getLastName(), //
+					userService.getUserById(id).getEmail()));
+
+			userService.deleteUser(id);
+		}
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/users/{id}", produces = "application/json")
