@@ -58,6 +58,7 @@ export class DeleteItem extends Component {
     return (
       <div className="text-left">
         <Button
+          size="small"
           variant="contained"
           color="secondary"
           onClick={this.handleClickOpen}
@@ -79,6 +80,7 @@ export class DeleteItem extends Component {
             <Button onClick={this.handleDeleteAndClose} color="primary">
               Delete User
             </Button>
+
           </DialogActions>
         </Dialog>
       </div>

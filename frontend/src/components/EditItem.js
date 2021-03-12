@@ -90,6 +90,7 @@ export class EditItem extends Component {
     return (
       <div className="text-left">
         <Button
+        size="small"
           variant="contained"
           color="primary"
           onClick={this.handleClickOpen}

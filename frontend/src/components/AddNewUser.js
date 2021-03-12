@@ -9,6 +9,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import UserService from "../service/UserService";
+import Utils from "../service/Utils";
 
 export default class AddNewUser extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ export default class AddNewUser extends React.Component {
     this.state = {
       open: false,
       firstname: "",
-      lastName: "",
+      secondName: "",
       email: "",
     };
     this.handleClickOpen = this.handleClickOpen.bind(this);
@@ -25,7 +26,12 @@ export default class AddNewUser extends React.Component {
   }
 
   handleClickOpen = (event) => {
-    this.setState({ open: true });
+    this.setState({
+      open: true,
+      firstname: "",
+      secondName: "",
+      email: "",
+    });
     console.log("opened");
   };
   handleClose = (event) => {
@@ -34,41 +40,50 @@ export default class AddNewUser extends React.Component {
   };
 
   handleCloseAndSaveUser = (event) => {
-    this.setState({ open: false });
-    console.log("close and save user");
     console.log(
       "User: [firstName: " +
         this.state.firstname +
         ", secondName: " +
-        this.state.secondname +
+        this.state.secondName +
         ", email: " +
         this.state.email +
         "]"
     );
-    event.preventDefault();
-    console.log(this.state);
-    console.log("id1=" + this.generateId());
+    if (
+      Utils.isNotEmplyName(this.state.firstname) &&
+      Utils.isNotEmplySecondName(this.state.secondName) &&
+      Utils.isNotEmplyEmail(this.state.email)
+    ) {
+      this.setState({ open: false });
+      console.log("close and save user");
 
-    UserService.createNewUser({
-      id: this.generateId(),
-      firstName: this.state.firstname,
-      lastName: this.state.secondname,
-      email: this.state.email,
-    })
-      .then((response) => {
-        console.log(response);
-        this.refreshPage();
+      event.preventDefault();
+      console.log(this.state);
+
+      UserService.createNewUser({
+        id: this.generateId(),
+        firstName: this.state.firstname,
+        lastName: this.state.secondName,
+        email: this.state.email,
       })
-      .catch((error) => {
-        console(error);
-      });
+        .then((response) => {
+          console.log(response);
+          this.refreshPage();
+        })
+        .catch((error) => {
+          console(error);
+        });
+    } else {
+      this.setState({ open: true });
+      console.log("do not close dialog beause empty field(s)");
+    }
   };
 
   getFirstName = (event) => {
     this.setState({ firstname: event.target.value });
   };
   getSecondName = (event) => {
-    this.setState({ secondname: event.target.value });
+    this.setState({ secondName: event.target.value });
   };
   getEmail = (event) => {
     this.setState({ email: event.target.value });
@@ -97,11 +112,12 @@ export default class AddNewUser extends React.Component {
     return (
       <div className="text-left">
         <Button
+          size="small"
           variant="contained"
           color="primary"
           onClick={this.handleClickOpen}
         >
-          Create new user
+          + new user
         </Button>
         <Dialog open={this.state.open} onClose={this.handleClose}>
           <DialogTitle id="form-dialog-title">Add new User</DialogTitle>
@@ -126,6 +142,7 @@ export default class AddNewUser extends React.Component {
             />
             <br />
             <TextField
+              id="componentEmail"
               autoFocus
               margin="dense"
               label="Email Address"

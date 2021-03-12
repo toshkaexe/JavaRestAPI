@@ -6,7 +6,7 @@ import AddNewUser from "./components/AddNewUser";
 function App() {
   return (
     <div className="App">
-      <h1 className="text-left">User List </h1>
+      <h1 className="text-left">Demo </h1>
 
       <AddNewUser />
       {/* <FormDialog /> */}
