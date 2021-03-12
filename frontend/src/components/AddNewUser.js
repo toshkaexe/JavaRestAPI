@@ -22,6 +22,7 @@ export default class AddNewUser extends React.Component {
       name_filled: "outlined",
       secondName_filled: "outlined",
       email_filled: "outlined",
+      emailError: ""
     };
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -84,7 +85,9 @@ export default class AddNewUser extends React.Component {
         email: this.state.email,
         name_filled: Utils.isValueNotEmpty(this.state.firstname) ? "outlined" : "filled",
         secondName_filled: Utils.isValueNotEmpty(this.state.secondName) ? "outlined" : "filled",
+        
         email_filled: Utils.isValueNotEmpty(this.state.email)  ? "outlined"  : "filled",
+        emailError: Utils.isValueNotEmpty(this.state.email)  ?  "":  "Enter a valid email"
       });
       console.log("do not close dialog beause empty field(s)");
     }
@@ -103,7 +106,8 @@ export default class AddNewUser extends React.Component {
   };
   getEmail = (event) => {
     this.setState({ email: event.target.value,
-      email_filled:  "outlined" 
+      email_filled:  "outlined",
+      emailError: "" 
     });
   };
 
@@ -169,7 +173,11 @@ export default class AddNewUser extends React.Component {
               type="email"
               onChange={this.getEmail}
               variant={this.state.email_filled}
-            />
+            /><br/>
+                    <span style={{ 
+          fontWeight: 'bold', 
+          color: 'red', 
+        }}>{this.state.emailError}</span> 
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
