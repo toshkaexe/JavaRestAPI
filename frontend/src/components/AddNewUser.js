@@ -91,13 +91,20 @@ export default class AddNewUser extends React.Component {
   };
 
   getFirstName = (event) => {
-    this.setState({ firstname: event.target.value });
+    this.setState({ firstname: event.target.value,
+      name_filled: "outlined",
+    });
   };
   getSecondName = (event) => {
-    this.setState({ secondName: event.target.value });
+    this.setState({ secondName: event.target.value,
+    
+      secondName_filled:  "outlined",
+    });
   };
   getEmail = (event) => {
-    this.setState({ email: event.target.value });
+    this.setState({ email: event.target.value,
+      email_filled:  "outlined" 
+    });
   };
 
   refreshPage() {
