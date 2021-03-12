@@ -34,10 +34,10 @@ class UserList extends React.Component {
         <table className="table table-striped">
           <thead>
             <tr>
-              <td> User First Name</td>
-              <td> User Last Name</td>
-              <td> User Email Id</td>
-              <td> Action</td>
+              <td>First Name</td>
+              <td>Last Name</td>
+              <td>Email</td>
+              <td>Action</td>
             </tr>
           </thead>
           <tbody>
