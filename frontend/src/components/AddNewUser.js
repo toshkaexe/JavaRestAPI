@@ -87,7 +87,7 @@ export default class AddNewUser extends React.Component {
         secondName_filled: Utils.isValueNotEmpty(this.state.secondName) ? "outlined" : "filled",
         
         email_filled: Utils.isValueNotEmpty(this.state.email)  ? "outlined"  : "filled",
-        emailError: Utils.isValueNotEmpty(this.state.email)  ?  "":  "Enter a valid email"
+        emailError: Utils.isNotEmptyEmail(this.state.email)  ?  "":  "Enter a valid email"
       });
       console.log("do not close dialog beause empty field(s)");
     }
