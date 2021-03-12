@@ -9,8 +9,6 @@ function App() {
       <h1 className="text-left">Demo </h1>
 
       <AddNewUser />
-      {/* <FormDialog /> */}
-
       <UserList />
     </div>
   );

@@ -50,9 +50,9 @@ export default class AddNewUser extends React.Component {
         "]"
     );
     if (
-      Utils.isNotEmplyName(this.state.firstname) &&
-      Utils.isNotEmplySecondName(this.state.secondName) &&
-      Utils.isNotEmplyEmail(this.state.email)
+      Utils.isValueNotEmpty(this.state.firstname) &&
+      Utils.isValueNotEmpty(this.state.secondName) &&
+      Utils.isNotEmptyEmail(this.state.email)
     ) {
       this.setState({ open: false });
       console.log("close and save user");
