@@ -19,6 +19,9 @@ export default class AddNewUser extends React.Component {
       firstname: "",
       secondName: "",
       email: "",
+      name_filled: "outlined",
+      secondName_filled: "outlined",
+      email_filled: "outlined",
     };
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -74,7 +77,15 @@ export default class AddNewUser extends React.Component {
           console(error);
         });
     } else {
-      this.setState({ open: true });
+      this.setState({
+        open: true,
+        firstName: this.state.firstname,
+        lastName: this.state.secondName,
+        email: this.state.email,
+        name_filled: Utils.isValueNotEmpty(this.state.firstname) ? "outlined" : "filled",
+        secondName_filled: Utils.isValueNotEmpty(this.state.secondName) ? "outlined" : "filled",
+        email_filled: Utils.isValueNotEmpty(this.state.email)  ? "outlined"  : "filled",
+      });
       console.log("do not close dialog beause empty field(s)");
     }
   };
@@ -130,6 +141,7 @@ export default class AddNewUser extends React.Component {
               type="text"
               //   onChange={(event) => setFirstName(event.target.value)}
               onChange={this.getFirstName}
+              variant={this.state.name_filled}
             />
             <br />
             <TextField
@@ -139,6 +151,7 @@ export default class AddNewUser extends React.Component {
               type="text"
               //    onChange={(event) => setSecondName(event.target.value)}
               onChange={this.getSecondName}
+              variant={this.state.secondName_filled}
             />
             <br />
             <TextField
@@ -148,6 +161,7 @@ export default class AddNewUser extends React.Component {
               label="Email Address"
               type="email"
               onChange={this.getEmail}
+              variant={this.state.email_filled}
             />
           </DialogContent>
           <DialogActions>
