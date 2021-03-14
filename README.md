@@ -8,8 +8,8 @@ docker run --publish 8086:8086 -it backend
 
 Open Postman for the page ans use this page http://localhost:8086/users
 GET http://localhost:8086/users
-PUT http://localhost:8086/users/5 with {"id": "5", "firstName": "Max","lastName": "Bauer","email": Max.Bauer@gogole.de"}
-Oder POST  http://localhost:8086/users{"id": "50","firstName": "Max","lastName": "Bauer","email": Max.Bauer@gogole.de" }
+PUT http://localhost:8086/users/5 with {"id": "5", "firstName": "Max","lastName": "Bauer","email": Max.Bauer@google.de"}
+Oder POST  http://localhost:8086/users{"id": "50","firstName": "Max","lastName": "Bauer","email": Max.Bauer@google.de" }
 
 ## UI & Frontendentwicklung
 To run application:
