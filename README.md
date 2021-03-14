@@ -1,6 +1,6 @@
 # Serviceentwicklung / Backend
 
-# To run application
+## To run application
 Go to \backend
 mvn -f pom.xml clean package
 docker build -f Dockerfile -t backend .
