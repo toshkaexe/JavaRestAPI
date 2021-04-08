@@ -5,8 +5,8 @@ Build a RESTful service in JAVA that allows to create a user with a first name, 
 UI & front-end development
 Build a browser app in JS, React.js, it allows to create a user with a first name, last name and email address. The browser app should make it possible to read the user's data, update it and delete users. It is sufficient to save the data in the browser.  Providing tests with Jest 
 
-## How to start
-# Serviceentwicklung / Backend
+# How to start
+## Serviceentwicklung / Backend
 
 To run application: 
 Go to \backend
@@ -19,7 +19,7 @@ GET http://localhost:8086/users
 PUT http://localhost:8086/users/5 with {"id": "5", "firstName": "Max","lastName": "Bauer","email": Max.Bauer@google.de"}
 Oder POST  http://localhost:8086/users{"id": "50","firstName": "Max","lastName": "Bauer","email": Max.Bauer@google.de" }
 
-# UI & Frontendentwicklung
+## UI & Frontendentwicklung
 To run application:
 Go to \frontend
 ### `npm install` and 
