@@ -1,6 +1,6 @@
 ## Description
 Service Development / Backend
-Build a RESTful service in JAVA that allows to create a user with a first name, last name and email address. Furthermore, the service should make it possible to read and update the user's data and delete users. It is sufficient to store the data in the working memory.
+Build a RESTful service in JAVA that allows to create a user with a first name, last name and email address. Furthermore, the service should make it possible to read and update the user's data and delete users. It is sufficient to store the data in the working memory. Techstack: Java + Spring MVC(*Model — View — Controller*) and React.js
 
 UI & front-end development
 Build a browser app in JS, React.js, it allows to create a user with a first name, last name and email address. The browser app should make it possible to read the user's data, update it and delete users. It is sufficient to save the data in the browser.  Providing tests with Jest 
