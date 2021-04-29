@@ -18,9 +18,12 @@ import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
 import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class UserService implements UserDao {
+	Logger log = LoggerFactory.getLogger(getClass());
 
 	private List<User> users = new ArrayList<>();
 
@@ -30,35 +33,6 @@ public class UserService implements UserDao {
 		this.users.add(new User("3", "Tao", "Mao", "Tao.Mao@gogole.de"));
 		this.users.add(new User("5", "Max", "Bauer", "Max.Bauer@gogole.de"));
 	}
-//
-//	List<User> loadDataFromJsonArray() throws org.json.simple.parser.ParseException {
-//		List<User> users = new ArrayList<>();
-//		// JSON parser object to parse read file
-//		JSONParser jsonParser = new JSONParser();
-//
-//		try (FileReader reader = new FileReader(
-//				this.getClass().getClassLoader().getResource("userlist.json").getFile())) {
-//			// Read JSON file
-//			Object obj = jsonParser.parse(reader);
-//			JSONObject jsonObject = (JSONObject) obj;
-//			// extracting data array from json string
-//			JSONArray usersArray = (JSONArray) jsonObject.get("users");
-//			for (int i = 0; i < usersArray.size(); i++) {
-//				JSONObject userItem = (JSONObject) usersArray.get(i);
-//
-//				System.out.println(String.format("item = %d, %s, - %s - %s, - %s", i, userItem.get("id"),
-//						userItem.get("name"), userItem.get("lastname"), userItem.get("email")));
-//
-//				users.add(new User(userItem.get("id").toString(), userItem.get("name").toString(),
-//						userItem.get("lastname").toString(), userItem.get("email").toString()));
-//
-//			}
-//
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		return users;
-//	}
 
 	public List<User> findAll() {
 
@@ -73,6 +47,8 @@ public class UserService implements UserDao {
 				return users.get(i);
 			}
 		}
+
+		log.error(String.format("Status: 404: We do not find User by id=%s, USER[id=%s]", id, id));
 		return null;
 	}
 
@@ -82,12 +58,10 @@ public class UserService implements UserDao {
 			User u = users.get(i);
 			if (u.getId().equals(id)) {
 				users.remove(i);
-				
 
 			}
 
 		}
-		
 
 	}
 
