@@ -49,7 +49,7 @@ public class UserService implements UserDao {
 		}
 
 		log.error(String.format("Status: 404: We do not find User by id=%s, USER[id=%s]", id, id));
-		return null;
+		return new User("--", "--", "--", "--");
 	}
 
 	public void deleteUser(String id) {
